@@ -2,9 +2,9 @@ import axios from "axios";
 
 //axios instance를 활용
 const api = axios.create({
-	baseURL : "https://api.themoviedb.org/3",
+	baseURL : "https://api.themoviedb.org/3/",
 	params : {
-		api_key : "10923b261ba94d897ac6b81148314a3f",
+		api_key : "c46fe969df3e58d22caa203945cd442b",
 		language : "en-US"
 	}
 });
