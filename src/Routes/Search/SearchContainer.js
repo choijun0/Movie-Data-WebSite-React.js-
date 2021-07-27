@@ -8,16 +8,25 @@ export default class extends React.Component{
 		movieResults: null,
 		tvResults: null,
 		searchTerm:"",
-		loading : false,
+		loading: false,
 		error:null
 	};
 
-	handleSubmit = () => {
+	handleSubmit = event => {
+		event.preventDefault(); //이벤트를 가로채서 browser가 창을 초기화 시키는 것을 막음
 		const {searchTerm} = this.state;
 		if(searchTerm !== ""){
 			this.searchByTerm();
 		}
 	}
+
+	//이부분을 설명해보자 "movie" 를입력한다고 해보자
+	//먼저 m을치면 아래함수가 호출되고 searchTerm의 값이 m이되고 input.value값도 m이된다
+	//o를 치는순가 그럼 target.value는 mo이다 ok, got it
+	updateTerm = ({target : {value}}) => {
+		this.setState({searchTerm : value});
+	}
+
 	searchByTerm = async term => {
 		const {searchTerm} = this.state;
 		try{
@@ -41,7 +50,7 @@ export default class extends React.Component{
 		 movieResults={movieResults}
 tvResult={tvResult}
 searchTerm={searchTerm} loading={loading} error={error}
-handleSubmit={this.handleSubmit}
+handleSubmit={this.handleSubmit} updateTerm={this.updateTerm}
 		/>
 	}
 }

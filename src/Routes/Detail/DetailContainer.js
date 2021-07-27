@@ -1,9 +1,9 @@
-import React from "react";
+import React, {Component} from "react";
 import DetailPresenter from "./DetailPresenter";
 import {movieApi} from "../../api";
 import {tvApi} from "../../api";
 
-export default class extends React.Component{
+export default class extends Component{
 	constructor(props){
 		super(props);
 		const {location : {pathname}} = props;
