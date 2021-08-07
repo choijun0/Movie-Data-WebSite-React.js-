@@ -4,13 +4,13 @@ import {movieApi} from "../../api";
 import {tvApi} from "../../api";
 
 export default class extends Component{
-	constructor(props){
+	constructor(props) {
 		super(props);
-		const {location : {pathname}} = props;
-		this.state={
-	  	reseult : null,
-	  	loading : true,
-			isMovie : pathname.includes("/movie/") //to separate show and movie
+		const { location: { pathname } } = props;
+		this.state = {
+			result: null,
+			loading: true,
+			isMovie: pathname.includes("/movie/") //to separate show and movie
 		}
 	}
 	async componentDidMount(){
@@ -26,7 +26,7 @@ export default class extends Component{
 				({data : result} = await movieApi.movieDetail(parsedId));
 			}
 			else{
-				({data : result} = await tvApi.movieDetail(parsedId));
+				({data : result} = await tvApi.showDetail(parsedId));
 			}
 		}
 		catch{
@@ -38,12 +38,10 @@ export default class extends Component{
 				result
 			});
 		}
-		console.log(this.state);
 	}
 	render(){
-		const {reseult, error, loading} = this.state;
-		return <DetailPresenter reseult={reseult}
-		error={error}
-		loading={loading}/>
+		console.log(this.state);
+		const {result, error, loading} = this.state;
+		return <DetailPresenter result={result} error={error} loading={loading}/>
 	}
 }

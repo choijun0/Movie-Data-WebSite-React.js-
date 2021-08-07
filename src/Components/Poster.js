@@ -51,21 +51,21 @@ color : rgba(255,255,255,0.7);
 `;
 
 const Poster = ({id, imageURL, title, rating, year, isMovie = false}) => 
-<Link to={isMovie ? `movie/${id}` : `show/${id}`}>
-<Container>
-<ImageContainer>
-<Image bgURL={imageURL ? `https://image.tmdb.org/t/p/w300${imageURL}` : require("../assets/noPosterSmall.png").default} />
-<Rating>
-<Star role="img" aria-label="rating">
-★
-</Star>{" "}
-{rating}/10
-</Rating>
-</ImageContainer>
-<Title>{title.length < 18 ? title : `${title.substring(0,15)}...`}</Title>
-<Year>{year}</Year>
-</Container>
-</Link>
+	<Link to={isMovie ? `movie/${id}` : `show/${id}`}>
+		<Container>
+			<ImageContainer>
+				<Image bgURL={imageURL ? `https://image.tmdb.org/t/p/w300${imageURL}` : require("../assets/noPosterSmall.png").default} />
+				<Rating>
+					<Star role="img" aria-label="rating">
+						★
+					</Star>{" "}
+					{rating}/10
+				</Rating>
+			</ImageContainer>
+			<Title>{title.length < 18 ? title : `${title.substring(0, 15)}...`}</Title>
+			<Year>{year}</Year>
+		</Container>
+	</Link>
 
 Poster.propTypes = {
 	id : PropTypes.number.isRequired,
