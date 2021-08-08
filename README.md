@@ -18,13 +18,9 @@ Learning React and ES6 by building a Movie Discovery App.
 - [X] Search (Movie, TV)
 
 
-## Component Constructure
-App
-Router
-Routes
-{
-	Container give data by propety to Presenter
-	and Presenter show data visually
-	and Container toss Presenter to index.js
-	index export Component
-} 
+## Code Challenges
+- [ ] IMDB Link
+- [ ] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
+- [ ] Collections Link
+- [ ] /collections Route
+- [ ] On TV Show, show seasons and creators
