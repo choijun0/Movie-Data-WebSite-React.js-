@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import Loader from "../../Components/Loader";
 import { Helmet } from "react-helmet";
-
+import Trailers from "./Trailers";
 
 const Container = styled.div`
 height: calc(100vh - 50px);
@@ -45,6 +45,8 @@ border-radius: 5px;
 const Data = styled.div`
 width: 70%;
 margin-left: 10px;
+display : flex;
+flex-direction: column;
 `
 
 const Title =styled.h3`
@@ -53,7 +55,9 @@ margin-bottom: 10px;
 `
 
 const Itemcontainer = styled.div`
+display: flex;
 margin: 20px 0;
+height: 14px;
 `
 
 const Item = styled.span`
@@ -71,6 +75,66 @@ opacity: 0.7;
 line-height: 1.25;
 width: 50%;
 `
+const ImdbT = styled.div`
+display: flex;
+height: 100%;
+padding: 2px 5px;
+justify-content: center;
+align-items: center;
+`
+const ImdbTT = styled.span`
+height: 100%;
+color : #2c3e50;
+`
+const ImdbA = styled.a`
+background-color: #f1c40f;
+border-radius: 7px;
+font-size: 10px;
+&:hover{
+  cursor: pointer;
+  background-color : #f39c12;
+  ${ImdbTT}{
+      color: #3498db;
+  }
+}
+`
+const Space = styled.div`
+height: 100%;
+width: calc(${props => props.w} * 1px);
+display: inline-block;
+`
+
+const Extracontent = styled.div`
+display: flex;
+margin-top: 15px;
+`
+const Prodcutioncontent = styled.div`
+display: flex;
+flex-direction : column-reverse;
+width: 50%;
+padding-bottom: 52px;
+`
+
+const Company = styled.div`
+height: 30px;
+width: auto;  
+background-image: url(${props => props.bgImage});
+background-position: left center;
+background-size: contain;
+background-repeat: no-repeat;
+margin-left: 10px;
+margin-top: 10px;
+`
+const Country = styled.div`
+
+`
+
+function getMeta(url, callback) {
+  var img = new Image();
+  img.src = url;
+  img.onload = function() { callback(this.width, this.height); }
+}
+
 
 const DetailPresenter = ({ result, error, loading }) => loading ? (<><Helmet><title>Loading | Nomfilx</title></Helmet><Loader /></>) : (
   <>
@@ -87,10 +151,18 @@ const DetailPresenter = ({ result, error, loading }) => loading ? (<><Helmet><ti
             <Item>{result.runtime ? result.runtime : result.episode_run_time[0] ? result.episode_run_time[0] : '?'} min</Item>
             <Divider>●</Divider>
             <Item>{result.genres ? result.genres.map((genre, index) => index === result.genres.length - 1 ? genre.name : `${genre.name} / `) : '?'}</Item>
+            <Space w={5}/>
+            {result.imdb_id && <ImdbA href={`https://www.imdb.com/title/${result.imdb_id}`}><ImdbT><ImdbTT>Imdb</ImdbTT></ImdbT></ImdbA>}
           </Itemcontainer>
           <Overview>
             {result.overview}
           </Overview>
+          <Extracontent>
+           {result.videos.results.length > 0 && <Trailers vsrc={result.videos.results} />}
+           <Prodcutioncontent>
+             {result.production_companies.map(comp => <Company bgImage={`https://image.tmdb.org/t/p/original${comp.logo_path}`} />)}
+           </Prodcutioncontent>
+          </Extracontent>
         </Data>
       </Content>
     </Container>
