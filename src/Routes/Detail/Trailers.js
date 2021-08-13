@@ -25,6 +25,7 @@ color: #2c3e50;
 font-size: 5px;
 font-weight: 700;
 padding-bottom: 2px;
+padding-left: calc(${props => props.index < 10 ? 0.2 : -0.3} * 1px);
 `
 
 const Index = styled.div`
@@ -66,7 +67,7 @@ const Trailers = ({vsrc : trailers}) => {
             <Videocontainer>
                 <Videoitem src={`https://www.youtube.com/embed/${trailers[index].key}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Videoitem>
                 <Indexcontainer>
-                    {trailers.map((trailer, tindex) => <Index onClick={() => func(tindex)} nowChoosen={tindex === index}><Indexspan>{tindex + 1}</ Indexspan></Index>)}
+                    {trailers.map((trailer, tindex) => <Index onClick={() => func(tindex)} nowChoosen={tindex === index}><Indexspan index={tindex + 1}>{tindex + 1}</ Indexspan></Index>)}
                 </Indexcontainer>
             </Videocontainer>
         </>

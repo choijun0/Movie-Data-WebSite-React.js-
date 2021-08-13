@@ -7,6 +7,7 @@ export default class extends Component{
 	constructor(props) {
 		super(props);
 		const { location: { pathname } } = props;
+		console.log(pathname);
 		this.state = {
 			result: null,
 			loading: true,
@@ -14,10 +15,13 @@ export default class extends Component{
 		}
 	}
 	async componentDidMount(){
-		const {match : { params : {id}} , history : {push}} = this.props;
+		const {match : { params : {id} } , history : {location, push}} = this.props;
 		const parsedId = parseInt(id);
 		if(isNaN(parsedId)){
 			return push("/"); //to kill function used return
+		}
+		if(this.state.isCollection){
+			return push("/");
 		}
 		const {isMovie} = this.state;
 		let result = null;

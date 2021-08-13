@@ -51,12 +51,12 @@ error,handleSubmit, updateTerm}) => (
 
 SearchPresenter.propTypes = {
 	movieResults: PropTypes.array,
-tvResults: PropTypes.array,
-searchTerm: PropTypes.string,
-loading: PropTypes.bool.isRequired,
-error: PropTypes.string,
-handleSubmit: PropTypes.func.isRequired,
-updateTerm : PropTypes.func.isRequired
+	tvResults: PropTypes.array,
+	searchTerm: PropTypes.string,
+	loading: PropTypes.bool.isRequired,
+	error: PropTypes.string,
+	handleSubmit: PropTypes.func.isRequired,
+	updateTerm: PropTypes.func.isRequired
 }
 
 export default SearchPresenter;

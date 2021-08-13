@@ -11,7 +11,6 @@ export default class extends React.Component{
 		loading: false,
 		error:null
 	};
-
 	handleSubmit = event => {
 		event.preventDefault(); //이벤트를 가로채서 browser가 창을 초기화 시키는 것을 막음
 		const {searchTerm} = this.state;
@@ -44,13 +43,13 @@ export default class extends React.Component{
 			});
 		}
 	}
-	render(){
-		const {movieResults, tvResults, searchTerm, loading, error} = this.state;
+	render() {
+		const { movieResults, tvResults, searchTerm, loading, error } = this.state;
 		return <SearchPresenter
-		 movieResults={movieResults}
-tvResults={tvResults}
-searchTerm={searchTerm} loading={loading} error={error}
-handleSubmit={this.handleSubmit} updateTerm={this.updateTerm}
+			movieResults={movieResults}
+			tvResults={tvResults}
+			searchTerm={searchTerm} loading={loading} error={error}
+			handleSubmit={this.handleSubmit} updateTerm={this.updateTerm}
 		/>
 	}
 }
