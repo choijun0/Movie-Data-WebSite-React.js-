@@ -75,17 +75,24 @@ background-color:rgba(52, 73, 94, 0.7);
 color: #f1c40f;
 border-radius: 20px;
 padding: 5px 20px 12px 20px;
-`
-const CollectionPresenter = ({ parts, poster_path, backdrop_path, overview, name, loading }) => loading ? <Loader /> : <Container>
-    <Backdrop bgUrl={`https://image.tmdb.org/t/p/original${backdrop_path}`} />
-    <Header>
-        <Image bgUrl={`https://image.tmdb.org/t/p/w300${poster_path}`} />
-        <Explaincontainer>
-            <Title>{name}</Title>
-            <Overview>{overview}</Overview>
-        </Explaincontainer>
-    </Header>
-    <Section title={parts.length > 1 ? 'Collection Movies' : 'Collection Movies'}>{parts.map(part => <Poster id={part.id} imageURL={part.poster_path} title={part.original_title} rating={part.vote_average} isMovie={true} year={part.release_date && part.release_date.substring(0, 4)} />)}</Section>
-</Container>
+`    
+const CollectionPresenter = ({ parts, poster_path, backdrop_path, overview, name, loading }) => loading ? <Loader /> : (
+    <>
+        <Helmet><title>{`${name} | Nomflix`}</title></Helmet>
+        <Container>
+            <Backdrop bgUrl={`https://image.tmdb.org/t/p/original${backdrop_path}`} />
+            <Header>
+                <Image bgUrl={`https://image.tmdb.org/t/p/w300${poster_path}`} />
+                <Explaincontainer>
+                    <Title>{name}</Title>
+                    <Overview>{overview}</Overview>
+                </Explaincontainer>
+            </Header>
+            <Section title={parts.length > 1 ? 'Collection Movies' : 'Collection Movies'}>{parts.map(part => <Poster id={part.id} imageURL={part.poster_path} title={part.original_title} rating={part.vote_average} isMovie={true} year={part.release_date && part.release_date.substring(0, 4)} />)}</Section>
+        </Container>
+
+    </>
+);
+
 
 export default CollectionPresenter;

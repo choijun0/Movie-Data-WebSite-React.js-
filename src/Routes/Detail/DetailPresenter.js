@@ -188,6 +188,10 @@ const DetailPresenter = ({ result, error, loading }) => loading ? (<><Helmet><ti
             <Item>{result.runtime ? result.runtime : result.episode_run_time ? result.episode_run_time[0] ? result.episode_run_time[0] : '?' : '?'} min</Item>
             <Divider>●</Divider>
             <Item>{result.genres ? result.genres.map((genre, index) => index === result.genres.length - 1 ? genre.name : `${genre.name} / `) : '?'}</Item>
+            {result.seasons ? (<>
+              <Divider>●</Divider>
+              <Item>{`Season ${result.seasons.length}`}</Item>
+            </>) : null}
             <Space w={5}/>
             {result.imdb_id && <ImdbA href={`https://www.imdb.com/title/${result.imdb_id}`}><ImdbT><ImdbTT>Imdb</ImdbTT></ImdbT></ImdbA>}
             {result.belongs_to_collection && (

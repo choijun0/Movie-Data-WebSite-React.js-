@@ -1,11 +1,12 @@
 # Nomflix
 Learning React and ES6 by building a Movie Discovery App.
 
-##Screens
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
+## Screens
+- [X] Home
+- [X] TV Shows
+- [X] Search
+- [X] Detail
+- [X] Collection
 
 ## API Verbs
 - [X] Now playing (Moive)
@@ -17,10 +18,9 @@ Learning React and ES6 by building a Movie Discovery App.
 - [X] Movie Detail
 - [X] Search (Movie, TV)
 
-
 ## Code Challenges
 - [X] IMDB Link
 - [X] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
 - [X] Collections Link
 - [X] Collections Route
-- [ ] On TV Show, show seasons and creators
+- [X] On TV Show, show seasons and creators
